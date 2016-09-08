@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		
+		<script src="jquery-3.1.0.js"></script>		
 		<script language=javascript>
 
 			function OuvrirPopup(page,nom,option) 
@@ -37,23 +37,24 @@
 
 				for (var h=0; h<1; h++)
 				{
-				    valeur = document.getElementById(champ_obligatoire[h]).value;
-				
-				    if( (valeur.length == 0) || (valeur == "") || (valeur == "NULL") )
-				    {
-				        champ_plein = false;
-				    }
+					valeur = document.getElementById(champ_obligatoire[h]).value;
+
+					if( (valeur.length == 0) || (valeur == "") || (valeur == "NULL") )
+					{
+						champ_plein = false;
+					}
 				}
 				 
 				if (champ_plein)
 				{
-					
-					document.getElementById('previsualiser').style.visibility = 'hidden';
+					$('#previsualiser').show()
+//					document.getElementById('previsualiser').style.visibility = 'hidden';
 //					document.getElementById('previsualiser').style.display = 'none';
 //					document.getElementById('previsualiser').disabled = false; 
 				}
 				else
 				{
+					$('#previsualiser').hide()
 					document.getElementById('previsualiser').style.visibility = 'visible';
 //					document.getElementById('previsualiser').style.display = 'yes';
 //					document.getElementById('previsualiser').disabled = true;
