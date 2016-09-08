@@ -93,9 +93,6 @@
 								<option value="australie">Australie</option>
 								<option value="europe">Europe</option>
 								<option value="moyen_orient">Moyen orient</option>
-								
-								<optgroup label="-- Personnalisation --">
-									<option value="autre">Personnaliser --></option>
 							</select>
 						</div>
 					</div>
@@ -125,6 +122,13 @@
 					</div>
 
 					<div id="champs_a_renseigner">
+						<div id="a">Routeur distant</div>
+						<div id="b">
+							<input type="text" name="routeurDistant" />
+						</div>
+					</div>
+					
+					<div id="champs_a_renseigner">
 						<div id="a">Nom de l'interface</div>
 						<div id="b">
 							<input type="text" name="nomInterface" />
@@ -133,42 +137,11 @@
 					
 					<div id="debit">
 						<div id="a">
-							<label for="debit">Debit</label>
+							<label for="debit">Debit    (en MBPS)</label>
 						</div>
 						<div id="b">
-							<select name="debitDeLaLiaison" id="debit">
-								<option value="defaut">--- Faites un choix ---</option>
-								<optgroup label="-- Liaison specialisee --">
-									<option value="32000&bandePassante=Liaison Specialisee 256 Kbps">1) 256 Kbps</option>
-									<option value="64000&bandePassante=Liaison Specialisee 512 Kbps">2) 512 Kbps</option>
-									<option value="96000&bandePassante=Liaison Specialisee 768 Kbps">3) 768 Kbps</option>
-									<option value="128000&bandePassante=Liaison Specialisee T1">4) T1</option>
-									<option value="256000&bandePassante=Liaison Specialisee E1">5) E1</option>
-									<option value="128000&bandePassante=Liaison Specialisee 1 Mbps">6) 1 Mbps</option>
-									<option value="128000&bandePassante=Liaison Specialisee 2 Mbps">7) 2 Mbps</option>
-									<option value="512000&bandePassante=Liaison Specialisee 4 Mbps">8) 4 Mbps</option>
-									<option value="750000&bandePassante=Liaison Specialisee 6 Mbps">9) 6 Mbps</option>
-									<option value="1250000&bandePassante=Liaison Specialisee 10 Mbps">10) 10 Mbps</option>
-									<option value="2560000&bandePassante=Liaison Specialisee 20 Mbps">11) 20 Mbps</option>
-									<option value="5625000&bandePassante=Liaison Specialisee 45 Mbps">12) 45 Mbps</option>
-									<option value="6250000&bandePassante=Liaison Specialisee 50 Mbps">13) 50 Mbps</option>
-									<option value="12500000&bandePassante=Liaison Specialisee 100 Mbps">14) 100 Mbps</option>
-									<option value="19375000&bandePassante=Liaison Specialisee 155 Mbps">15) 155 Mbps</option>
-									<option value="125000000&bandePassante=Liaison Specialisee 1 Gbps">16) 1 Gbps</option>
-								<optgroup label="------- DSL -------">
-									<option value="64000&bandePassante=ADSL 512Kbps">17) ADSL 512 Kbps</option>
-									<option value="125000&bandePassante=ADSL 1 Mbps">18) ADSL 1 Mbps</option>
-									<option value="250000&bandePassante=ADSL 2 Mbps">19) ADSL 2 Mbps</option>
-									<option value="500000&bandePassante=ADSL 4 Mbps">20) ADSL 4 Mbps</option>
-									<option value="1000000&bandePassante=ADSL 8 Mbps">21) ADSL 8 Mbps</option>
-									<option value="1250000&bandePassante=ADSL 10 Mbps">22) ADSL 10 Mbps</option>
-									<option value="1875000&bandePassante=ADSL 15 Mbps">23) ADSL 15 Mbps</option>
-									<option value="2500000&bandePassante=ADSL 20 Mbps">24) ADSL 20 Mbps</option>
-								<optgroup label="-- Personnalisation --">
-								<option value="autre">25) Personnaliser --></option>
-							</select>
+							<input type="text" name="debit" />
 						</div>
-
 					</div>
 										
 					<div id="champs_a_renseigner">
@@ -178,12 +151,6 @@
 						</div>
 					</div>					
 					
-					<div id="champs_a_renseigner">
-						<div id="a">Routeur de concentration</div>
-						<div id="b">
-							<input type="text" name="routeurDestination" />
-						</div>
-					</div>
 					
 					<div id="bouton_submit">
 						<div id="a"></div>
@@ -206,7 +173,7 @@
 
 			<footer>
 				<div id="footer">
-				Interface Briva version 1.2
+				Interface Briva
 				</div>
 			</footer>
 
