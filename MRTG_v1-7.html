@@ -28,8 +28,31 @@
 					alert('Nom du routeur non defini');
 				}
 			}
+			
+			function end_form()
+			{
+				var champ_obligatoire = ['nomDuRouteur'];
+				var champ_plein = true;
 
-
+				for (var h=0; h<1; h++)
+				{
+				    valeur = document.getElementById(champ_obligatoire[h]).value;
+				
+				    if( (valeur.length == 0) || (valeur == "") || (valeur == "NULL") )
+				    {
+				        champ_plein = false;
+				    }
+				}
+				 
+				if (champ_plein)
+				{
+					document.getElementById('previsualiser').disabled = false; 
+				}
+				else
+				{
+					document.getElementById('previsualiser').disabled = true;
+				}
+			}
 		</SCRIPT>
 		
 		<meta charset="utf-8" />
@@ -134,18 +157,18 @@
 							<input type="text" name="nomInterface" />
 						</div>
 					</div>
-					
+
 					<div id="debit">
 						<div id="a">
-							<label for="debit">Debit (en MBPS)</label>
+							<label for="debit">Debit <b>(en MBPS)</b></label>
 						</div>
 						<div id="b">
 							<input type="text" name="debit" />
 						</div>
 					</div>
-										
+
 					<div id="champs_a_renseigner">
-						<div id="a">Index SLA</div>
+						<div id="a">Numero de SLA</div>
 						<div id="b">
 							<input type="text" name="indexIpSla" />
 						</div>
