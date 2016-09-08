@@ -47,11 +47,16 @@
 				 
 				if (champ_plein)
 				{
-					document.getElementById('previsualiser').disabled = false; 
+					
+					document.getElementById('previsualiser').style.visibility = 'hidden';
+//					document.getElementById('previsualiser').style.display = 'none';
+//					document.getElementById('previsualiser').disabled = false; 
 				}
 				else
 				{
-					document.getElementById('previsualiser').disabled = true;
+					document.getElementById('previsualiser').style.visibility = 'visible';
+//					document.getElementById('previsualiser').style.display = 'yes';
+//					document.getElementById('previsualiser').disabled = true;
 				}
 			}
 		</SCRIPT>
