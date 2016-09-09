@@ -2,12 +2,6 @@
 <html>
 	<head>
 		<script type="text/javascript" src="jquery-3.1.0.js">
-			$(document).ready(function(){
-			$('#previsualiser').hide()
-			});
-			
-		</script>		
-		<script language=javascript>
 
 			function OuvrirPopup(page,nom,option) 
 			{
@@ -19,6 +13,7 @@
 				document.Form1.target ='_parent';
 				document.Form1.action ='/cgi-bin/index.py';
 			}
+			
 			function SnmpPopup()
 			{
 				if((document.getElementById('nomDuRouteur').value) != '')
@@ -70,9 +65,10 @@
 				}
 			}
 			*/
-		</SCRIPT>
-		
-		<meta charset="utf-8" />
+
+			</SCRIPT>
+
+			<meta charset="utf-8" />
 		<link rel="stylesheet" href="style.css" />
 		<title>Briva - Administration MRTG</title>		
 
