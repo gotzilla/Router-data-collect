@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<script src="jquery-3.1.0.js"></script>		
 		<script language=javascript>
+		
+			$('#previsualiser').hide()
 
 			function OuvrirPopup(page,nom,option) 
 			{
@@ -13,7 +16,6 @@
 				document.Form1.target ='_parent';
 				document.Form1.action ='/cgi-bin/index.py';
 			}
-
 			function SnmpPopup()
 			{
 				if((document.getElementById('nomDuRouteur').value) != '')
@@ -29,27 +31,25 @@
 				}
 			}
 			
-			function end_form()
+/*			function end_form()
 			{
 				var champ_obligatoire = ['nomDuRouteur'];
 				var champ_plein = true;
-
 				for (var h=0; h<1; h++)
 				{
-				    valeur = document.getElementById(champ_obligatoire[h]).value;
-				
-				    if( (valeur.length == 0) || (valeur == "") || (valeur == "NULL") )
-				    {
-				        champ_plein = false;
-				    }
+					valeur = document.getElementById(champ_obligatoire[h]).value;
+					if( (valeur.length == 0) || (valeur == "") || (valeur == "NULL") )
+					{
+						champ_plein = false;
+					}
 				}
-				 
+				 
 				if (champ_plein)
 				{
-					
-					document.getElementById('previsualiser').style.visibility = 'hidden';
+					$('previsualiser').show()
+//					document.getElementById('previsualiser').style.visibility = 'hidden';
 //					document.getElementById('previsualiser').style.display = 'none';
-//					document.getElementById('previsualiser').disabled = false; 
+//					document.getElementById('previsualiser').disabled = false; 
 				}
 				else
 				{
@@ -58,6 +58,7 @@
 //					document.getElementById('previsualiser').disabled = true;
 				}
 			}
+			*/
 		</SCRIPT>
 		
 		<meta charset="utf-8" />
@@ -145,7 +146,7 @@
 							<input type="text" name="nomDuRouteur" id="nomDuRouteur" />
 						</div>
 						<div id="c">
-							<INPUT type="submit" value="Afficher interfaces" class="bouton_submit" name="previsualiser" onClick="SnmpPopup()" /> 
+							<INPUT type="submit" value="Afficher interfaces" class="bouton_submit" id="previsualiser" name="previsualiser" onClick="SnmpPopup()" /> 
 						</div>
 					</div>
 
