@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="jquery-3.1.0.js"></script>		
+		<script src="jquery-3.1.0.js">
+			$('#previsualiser').hide()
+		</script>		
 		<script language=javascript>
 
 			function OuvrirPopup(page,nom,option) 
@@ -54,7 +56,6 @@
 				}
 				else
 				{
-					$('#previsualiser').hide()
 					document.getElementById('previsualiser').style.visibility = 'visible';
 //					document.getElementById('previsualiser').style.display = 'yes';
 //					document.getElementById('previsualiser').disabled = true;
@@ -147,7 +148,7 @@
 							<input type="text" name="nomDuRouteur" id="nomDuRouteur" />
 						</div>
 						<div id="c">
-							<INPUT type="submit" value="Afficher interfaces" class="bouton_submit" name="previsualiser" onClick="SnmpPopup()" /> 
+							<INPUT type="submit" value="Afficher interfaces" class="bouton_submit" id="previsualiser" name="previsualiser" onClick="SnmpPopup()" /> 
 						</div>
 					</div>
 
