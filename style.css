@@ -77,6 +77,15 @@ header
 	margin-top: 5px;
 }
 
+#previsualiser
+{
+	display: none;
+    vertical-align: middle;
+    width: 28%;
+	margin-top: 5px;
+}
+
+
 select
 {
 	width: 212px;
