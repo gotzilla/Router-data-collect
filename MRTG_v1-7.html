@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
+<<<<<<< HEAD
 		<script type="text/javascript" src="jquery-3.1.0.js">
 			$(document).ready(function(){
 			$('#previsualiser').hide()
 			});
+=======
+		<script src="jquery-3.1.0.js">
+			$('#previsualiser').hide()
+			
+		</script>		
+		<script language=javascript>
+>>>>>>> 721c753e8366ac694de1131796db2b521954bf6f
 
 			function OuvrirPopup(page,nom,option) 
 			{
@@ -38,6 +46,10 @@
 				for (var h=0; h<1; h++)
 				{
 					valeur = document.getElementById(champ_obligatoire[h]).value;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 721c753e8366ac694de1131796db2b521954bf6f
 					if( (valeur.length == 0) || (valeur == "") || (valeur == "NULL") )
 					{
 						champ_plein = false;
@@ -46,7 +58,11 @@
 				 
 				if (champ_plein)
 				{
+<<<<<<< HEAD
 					$('previsualiser').show()
+=======
+					$('#previsualiser').show()
+>>>>>>> 721c753e8366ac694de1131796db2b521954bf6f
 //					document.getElementById('previsualiser').style.visibility = 'hidden';
 //					document.getElementById('previsualiser').style.display = 'none';
 //					document.getElementById('previsualiser').disabled = false; 
