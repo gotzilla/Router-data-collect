@@ -29,42 +29,30 @@
 				}
 			}
 			
-/*			function end_form()
-			{
+			function end_form()
+			{	
 				var champ_obligatoire = ['nomDuRouteur'];
-				var champ_plein = true;
-				for (var h=0; h<1; h++)
-				{
-					valeur = document.getElementById(champ_obligatoire[h]).value;
-<<<<<<< HEAD
-=======
+				var champ_plein = false;
+				document.getElementById("previsualiser").id = "previsualiserHide";
 
->>>>>>> 721c753e8366ac694de1131796db2b521954bf6f
-					if( (valeur.length == 0) || (valeur == "") || (valeur == "NULL") )
-					{
-						champ_plein = false;
-					}
+				valeur = document.getElementById('nomDuRouteur').value;
+
+				if ( (valeur.length != 0) || (valeur != "") || (valeur != "NULL") )
+				{
+				
+					champ_plein = true;
 				}
-				 
+
 				if (champ_plein)
 				{
-<<<<<<< HEAD
-					$('previsualiser').show()
-=======
-					$('#previsualiser').show()
->>>>>>> 721c753e8366ac694de1131796db2b521954bf6f
+					document.getElementById("previsualiser").id = "previsualiserShow";
+//					$('#previsualiser').show()
 //					document.getElementById('previsualiser').style.visibility = 'hidden';
 //					document.getElementById('previsualiser').style.display = 'none';
 //					document.getElementById('previsualiser').disabled = false; 
 				}
-				else
-				{
-					document.getElementById('previsualiser').style.visibility = 'visible';
-//					document.getElementById('previsualiser').style.display = 'yes';
-//					document.getElementById('previsualiser').disabled = true;
-				}
 			}
-			*/
+
 
 			</SCRIPT>
 
@@ -79,7 +67,6 @@
 
 			<header>
 				<div id="titre_principal">
-					<H1>Service - Briva</H1>
 					<H2>Administration MRTG</H2>
 				</div>
 			</header>
@@ -92,6 +79,17 @@
 			<section>
 			<form name="Form1" id="Form1" method="POST" >
 				<div id="section">
+					
+					<div id="champs_a_renseigner">
+						<div id="a">Routeur</div>
+						<div id="b">
+							<input type="text" name="nomDuRouteur" id="nomDuRouteur" onChange="end_form()"/>
+						</div>
+						<div id="c">
+							<INPUT type="submit" value="Afficher interfaces" class="bouton_submit" id="previsualiserHide" name="previsualiser" onClick="SnmpPopup()" /> 
+						</div>
+					</div>
+					
 					<div id="type_de_liaison">
 						<div id="a">
 							<label for="type_de_liaison">Type de liaison</label>
@@ -113,8 +111,8 @@
 						</div>
 					</div>
 					
+<!--
 					<div id="div_continent">
-
 						<div id="a">
 							<label for="Continent">Continent</label>
 						</div>
@@ -132,6 +130,7 @@
 							</select>
 						</div>
 					</div>
+-->
 
 					<div id="champs_a_renseigner">
 						<div id="a">Pays</div>
@@ -147,15 +146,6 @@
 						</div>
 					</div>
 
-					<div id="champs_a_renseigner">
-						<div id="a">Routeur</div>
-						<div id="b">
-							<input type="text" name="nomDuRouteur" id="nomDuRouteur" />
-						</div>
-						<div id="c">
-							<INPUT type="submit" value="Afficher interfaces" class="bouton_submit" id="previsualiser" name="previsualiser" onClick="SnmpPopup()" /> 
-						</div>
-					</div>
 
 					<div id="champs_a_renseigner">
 						<div id="a">Routeur distant</div>
