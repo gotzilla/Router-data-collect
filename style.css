@@ -19,6 +19,8 @@ body
     margin: auto;
 }
 
+
+
 /* Header */
 header
 {
@@ -59,7 +61,25 @@ header
 	font-style: italic;
 }
 
-#section, #bouton_submit
+#section
+{
+	margin-top: 50px; /* Marge supérieure de 100px */
+	display: flex;
+}
+
+#enfant1
+{
+	width: 50%;
+	margin-right: 5px;
+}
+
+#madivresult
+{
+	display: flex-grow;
+	margin-right: 10px;
+}
+
+#bouton_submit
 {
 	margin-top: 50px; /* Marge supérieure de 100px */
 }
@@ -73,8 +93,15 @@ header
 {
     display: inline-block;
     vertical-align: middle;
-    width: 20%;
+    width: 40%;
 	margin-top: 5px;
+}
+
+#d
+{
+    vertical-align: middle;
+	margin-top: 5px;
+	margin-left: 10px;
 }
 
 #previsualiserHide

@@ -1,61 +1,29 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script type="text/javascript" src="jquery-3.1.0.js">
+		<script type="text/javascript" src="jquery-3.1.0.js"> </script>
+		<script type="text/javascript">
 
-			function OuvrirPopup(page,nom,option) 
-			{
-				window.open(page,nom,option);
-			}
-			
-			function Soumettre()
-			{
-				document.Form1.target ='_parent';
-				document.Form1.action ='/cgi-bin/index.py';
-			}
-			
-			function SnmpPopup()
-			{
-				if((document.getElementById('nomDuRouteur').value) != '')
-				{ 
-					document.Form1.action ='/cgi-bin/polSnmp.py';
-					pop_up=window.open ('','pop_up','fullscreen=no, height=500, width=500, resizable=no, scrollbars=1, scrolling=yes');
-					document.Form1.target ='pop_up';
-				}
-			
-				else
+
+			$(document).ready(function() {
+				$('#nomDuRouteur').change(onvaluechange);
+
+				function onvaluechange(e)
 				{
-					alert('Nom du routeur non defini');
+					console.log('test');
+					$.ajax({
+						data: {param1:$('#nomDuRouteur').val()},
+						url: 'http://127.0.0.1/tests/testSNMP.php'
+					}).done(function(data){
+						$('#madivresult').html(data);
+					});
 				}
-			}
+			});
 			
-			function end_form()
-			{	
-				var champ_obligatoire = ['nomDuRouteur'];
-				var champ_plein = false;
-				document.getElementById("previsualiser").id = "previsualiserHide";
-
-				valeur = document.getElementById('nomDuRouteur').value;
-
-				if ( (valeur.length != 0) || (valeur != "") || (valeur != "NULL") )
-				{
-				
-					champ_plein = true;
-				}
-
-				if (champ_plein)
-				{
-					document.getElementById("previsualiser").id = "previsualiserShow";
-//					$('#previsualiser').show()
-//					document.getElementById('previsualiser').style.visibility = 'hidden';
-//					document.getElementById('previsualiser').style.display = 'none';
-//					document.getElementById('previsualiser').disabled = false; 
-				}
-			}
+		</script>
 
 
-			</SCRIPT>
-
+			
 			<meta charset="utf-8" />
 		<link rel="stylesheet" href="style.css" />
 		<title>Briva - Administration MRTG</title>		
@@ -76,105 +44,106 @@
 					Outil de creation de configuration MRTG - Service
 				</div>
 			</div>
-			<section>
-			<form name="Form1" id="Form1" method="POST" >
-				<div id="section">
+			<section id="section">
+				<div id="enfant1">
+					<form method="POST" >
+						
+						<div id="champs_a_renseigner">
+							<div id="a">Routeur</div>
+							<div id="b">
+							
+								<input type="text" name="nomDuRouteur" id="nomDuRouteur" />
+	<!-- 
+
+	<input type="text" name="nomDuRouteur" id="nomDuRouteur" onChange="onvaluechange"/>
+	$('#nomDuRouteur').change(onvaluechange);
+
+	-->
+								</div>
+
+						</div>
+						
+						<div id="type_de_liaison">
+							<div id="a">
+								<label for="type_de_liaison">Type de liaison</label>
+							</div>
+							<div id="b">
+								<select name="lien" id="lien">
+									<option value="defaut">--- Faites un choix ---</option>
+									<option value="bkpvpn">Backup VPN</option>
+									<option value="dmvpn">DMVPN</option>
+									<option value="ls">Liaison specialisee</option>
+								</select>
+							</div>
+						</div>
+
+						<div id="champs_a_renseigner">
+							<div id="a">Agence</div>
+							<div id="b">
+								<input type="text" name="societe" />
+							</div>
+						</div>
+
+						<div id="champs_a_renseigner">
+							<div id="a">Pays</div>
+							<div id="b">
+								<input type="text" name="pays" />
+							</div>
+						</div>
+
+						<div id="champs_a_renseigner">
+							<div id="a">Ville</div>
+							<div id="b">
+								<input type="text" name="ville" />
+							</div>
+						</div>
+
+
+						<div id="champs_a_renseigner">
+							<div id="a">Routeur distant</div>
+							<div id="b">
+								<input type="text" name="routeurDistant" />
+							</div>
+						</div>
+	<!--					
+						<div id="champs_a_renseigner">
+							<div id="a">Nom de l'interface</div>
+							<div id="b">
+								<input type="text" name="nomInterface" />
+							</div>
+						</div>
+	-->
+						<div id="debit">
+							<div id="a">
+								<label for="debit">Debit <b>(en MBPS)</b></label>
+							</div>
+							<div id="b">
+								<input type="text" name="debit" />
+							</div>
+						</div>
+
+						<div id="champs_a_renseigner">
+							<div id="a">Numero de SLA</div>
+							<div id="b">
+								<input type="text" name="indexIpSla" />
+							</div>
+						</div>
+						
+						<div id="bouton_submit">
+							<div id="a"></div>
+							<div id="b">
+								<input type=hidden name=etat value=test id=hide1>
+								<input type="submit" value="Generer la page MRTG" class="bouton_submit" onClick="document.getElementById('hide1').value='validation' ; Soumettre() ; window.pop_up.close();" />
+							</div>
+						</div>
+					</div>
 					
 					<div id="champs_a_renseigner">
-						<div id="a">Routeur</div>
-						<div id="b">
-							<input type="text" name="nomDuRouteur" id="nomDuRouteur" onChange="end_form()"/>
-						</div>
-						<div id="c">
-							<INPUT type="submit" value="Afficher interfaces" class="bouton_submit" id="previsualiserHide" name="previsualiser" onClick="SnmpPopup()" /> 
-						</div>
-					</div>
-					
-					<div id="type_de_liaison">
-						<div id="a">
-							<label for="type_de_liaison">Type de liaison</label>
-						</div>
-						<div id="b">
-							<select name="lien" id="lien">
-								<option value="defaut">--- Faites un choix ---</option>
-								<option value="bkpvpn">Backup VPN</option>
-								<option value="dmvpn">DMVPN</option>
-								<option value="ls">Liaison specialisee</option>
-							</select>
-						</div>
 					</div>
 
-					<div id="champs_a_renseigner">
-						<div id="a">Agence</div>
-						<div id="b">
-							<input type="text" name="societe" />
-						</div>
-					</div>
-
-					<div id="champs_a_renseigner">
-						<div id="a">Pays</div>
-						<div id="b">
-							<input type="text" name="pays" />
-						</div>
-					</div>
-
-					<div id="champs_a_renseigner">
-						<div id="a">Ville</div>
-						<div id="b">
-							<input type="text" name="ville" />
-						</div>
-					</div>
-
-
-					<div id="champs_a_renseigner">
-						<div id="a">Routeur distant</div>
-						<div id="b">
-							<input type="text" name="routeurDistant" />
-						</div>
-					</div>
-<!--					
-					<div id="champs_a_renseigner">
-						<div id="a">Nom de l'interface</div>
-						<div id="b">
-							<input type="text" name="nomInterface" />
-						</div>
-					</div>
--->
-					<div id="debit">
-						<div id="a">
-							<label for="debit">Debit <b>(en MBPS)</b></label>
-						</div>
-						<div id="b">
-							<input type="text" name="debit" />
-						</div>
-					</div>
-
-					<div id="champs_a_renseigner">
-						<div id="a">Numero de SLA</div>
-						<div id="b">
-							<input type="text" name="indexIpSla" />
-						</div>
-					</div>
-					
-					<div id="bouton_submit">
-						<div id="a"></div>
-						<div id="b">
-							<input type=hidden name=etat value=test id=hide1>
-							<input type="submit" value="Generer la page MRTG" class="bouton_submit" onClick="document.getElementById('hide1').value='validation' ; Soumettre() ; window.pop_up.close();" />
-						</div>
-					</div>
+				</form>
+				<div id="madivresult">
 				</div>
-				<div id="affichage_interfaces">
-					http://127.0.0.1/tests/testSNMP.php
-				</div>
-				
-
-				<div id="champs_a_renseigner">
-				</div>
-
-			</form>
-			
-
 			</section>
 
 			<footer>
@@ -184,6 +153,5 @@
 			</footer>
 
 		</div>
-	
 	</body>
 </html>
