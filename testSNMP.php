@@ -13,7 +13,11 @@ $community = "";
 
 //$a = snmpwalk("$host", "$community", "iso.org.dod.internet.mgmt.mib-2.interfaces.ifTable.ifEntry.ifDescr");
 $a['iface'] = snmpwalk("$host","$community",".1.3.6.1.2.1.2.2.1.2");
-$a['value'] = snmpwalk("$host","$community",".1.3.6.1.2.1.2.2.1.1");
+$a['idSnmp'] = snmpwalk("$host","$community",".1.3.6.1.2.1.2.2.1.1");		
+$a['description'] = snmpwalk("$host","$community",".1.3.6.1.2.1.31.1.1.1.18");	// OID ifxAlias (description de l'interface)
+
+
+$b=array();
 
 echo 
 '
@@ -21,15 +25,17 @@ echo
 		<p>
 			Veuillez sélectionner l\'interface du routeur ' . $_GET['param1'] . ' :<br />
 ';
-
+/*
+// Parcours le tableau 'iface' en donnant une valeur clé (index) => $element 
 foreach ($a['iface'] as $key => $element)
 {
 	if (stristr($element, "giga") || stristr($element, "fast"))
 	{
 		echo '<div id="d">';
-		echo explode('"', $element)[1] . '  |  Index SNMP : ' . explode(' ', $a['value'][$key])[1] . ' <br />' ;
+		//<input type="radio" name="age" idSnmp="moins15" id="moins15" /> <label for="moins15">Moins de 15 ans</label><br />
+		echo explode('"', $element)[1] . '  |  Index SNMP : ' . explode(' ', $a['idSnmp'][$key])[1] . ' <br />' ;
 		echo '</div>';
-		//		echo $a['value'][$key] . ' <br />' ;
+		//		echo $a['idSnmp'][$key] . ' <br />' ;
 	}
 	echo 
 	'
@@ -37,6 +43,27 @@ foreach ($a['iface'] as $key => $element)
 		</form>
 	';
 }
+*/
+
+foreach ($a['iface'] as $key => $element)
+{
+	if (stristr($element, "giga") || stristr($element, "fast"))
+	{
+		$a['idSnmp'][$key] = explode(' ', $a['idSnmp'][$key])[1];
+		$a['iface'][$key] = explode('"', $a['iface'][$key])[1];
+		$a['description'][$key] = explode('"', $a['description'][$key])[1];
+
+		$b[$key]['idSnmp']=$a['idSnmp'][$key];
+		$b[$key]['iface']=$a['iface'][$key];
+		$b[$key]['description']=$a['description'][$key];
+
+		echo $b[$key]['idSnmp'] . ' ';
+		echo $b[$key]['iface'] . ' ';
+		echo $b[$key]['description'] . '<br />';
+	}
+}
+
+print_r($b);
 
 
 
